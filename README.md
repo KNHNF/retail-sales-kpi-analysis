@@ -1,8 +1,7 @@
 # 📊 Sales Data Quality & Reporting System  
-`[Looks like the result wasn't safe to show. Let's switch things up and try something else!]`  
-`https://img.shields.io/badge/Python-3.10+-blue.svg`  
-`https://img.shields.io/badge/MySQL-8.0-orange.svg`  
-`https://img.shields.io/badge/Project-Active-brightgreen.svg`
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-orange.svg)
+![Status](https://img.shields.io/badge/Project-Active-brightgreen.svg)
 
 A compact, end‑to‑end data workflow demonstrating how raw transactional data can be cleaned, validated, stored, and transformed into business‑ready insights.  
 Built as a practical BI‑style project using Python and MySQL.
@@ -111,7 +110,6 @@ project/
     └── sales_analysis.ipynb
 ```
 
----
 
 ## 👤 Author
 
@@ -136,4 +134,3 @@ Focused on Data Engineering & Quantitative Systems
 This project is released under the **MIT License**.  
 You are free to use, modify, and build upon it.
 
----
