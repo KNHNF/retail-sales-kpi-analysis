@@ -1,70 +1,84 @@
 import os
 import pandas as pd
 
-# Path setup
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-file_path = os.path.join(BASE_DIR, "data", "dataset.csv")
 
-df = pd.read_csv(file_path, encoding="ISO-8859-1")
+def generate_report():
+    """
+    Loads dataset, performs cleaning, calculates KPIs,
+    and saves a structured sales KPI report.
+    """
 
-# Convert date
-df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"], errors="coerce")
+    # Project root directory
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    file_path = os.path.join(BASE_DIR, "data", "dataset.csv")
 
-# Remove cancellations (InvoiceNo starting with C)
-df = df[~df["InvoiceNo"].astype(str).str.startswith("C")]
+    # Ensure reports folder exists
+    reports_dir = os.path.join(BASE_DIR, "reports")
+    os.makedirs(reports_dir, exist_ok=True)
 
-# Remove negative quantities
-df = df[df["Quantity"] > 0]
+    # Load data
+    df = pd.read_csv(file_path, encoding="ISO-8859-1")
 
-# Calculate revenue
-df["Revenue"] = df["Quantity"] * df["UnitPrice"]
+    # Convert InvoiceDate to datetime
+    df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"], errors="coerce")
 
-report_lines = []
-report_lines.append("=== SALES KPI REPORT ===\n")
+    # Remove cancelled invoices
+    df = df[~df["InvoiceNo"].astype(str).str.startswith("C")]
 
-# 1️⃣ Total Revenue
-total_revenue = df["Revenue"].sum()
-report_lines.append(f"Total Revenue: £{total_revenue:,.2f}\n")
+    # Remove negative quantities
+    df = df[df["Quantity"] > 0]
 
-# 2️⃣ Top 10 Products
-top_products = (
-    df.groupby("Description")["Revenue"]
-    .sum()
-    .sort_values(ascending=False)
-    .head(10)
-)
+    # Calculate revenue
+    df["Revenue"] = df["Quantity"] * df["UnitPrice"]
 
-report_lines.append("Top 10 Products by Revenue:\n")
-report_lines.append(str(top_products))
-report_lines.append("\n")
+    report_lines = []
+    report_lines.append("=== SALES KPI REPORT ===\n")
 
-# 3️⃣ Revenue by Country
-revenue_by_country = (
-    df.groupby("Country")["Revenue"]
-    .sum()
-    .sort_values(ascending=False)
-)
+    # 1️⃣ Total Revenue
+    total_revenue = df["Revenue"].sum()
+    report_lines.append(f"Total Revenue: £{total_revenue:,.2f}\n")
 
-report_lines.append("Revenue by Country:\n")
-report_lines.append(str(revenue_by_country))
-report_lines.append("\n")
+    # 2️⃣ Top 10 Products
+    top_products = (
+        df.groupby("Description")["Revenue"]
+        .sum()
+        .sort_values(ascending=False)
+        .head(10)
+    )
 
-# 4️⃣ Monthly Revenue Trend
-df["YearMonth"] = df["InvoiceDate"].dt.to_period("M")
+    report_lines.append("Top 10 Products by Revenue:\n")
+    report_lines.append(str(top_products))
+    report_lines.append("\n")
 
-monthly_revenue = (
-    df.groupby("YearMonth")["Revenue"]
-    .sum()
-)
+    # 3️⃣ Revenue by Country
+    revenue_by_country = (
+        df.groupby("Country")["Revenue"]
+        .sum()
+        .sort_values(ascending=False)
+    )
 
-report_lines.append("Monthly Revenue Trend:\n")
-report_lines.append(str(monthly_revenue))
+    report_lines.append("Revenue by Country:\n")
+    report_lines.append(str(revenue_by_country))
+    report_lines.append("\n")
 
-# Save report
-report_path = os.path.join(BASE_DIR, "reports", "sales_kpi_report.txt")
+    # 4️⃣ Monthly Revenue
+    df["YearMonth"] = df["InvoiceDate"].dt.to_period("M")
 
-with open(report_path, "w") as f:
-    for line in report_lines:
-        f.write(line + "\n")
+    monthly_revenue = (
+        df.groupby("YearMonth")["Revenue"]
+        .sum()
+    )
 
-print("Sales KPI report generated.")
+    report_lines.append("Monthly Revenue Trend:\n")
+    report_lines.append(str(monthly_revenue))
+
+    # Save report
+    report_path = os.path.join(reports_dir, "sales_kpi_report.txt")
+
+    with open(report_path, "w") as f:
+        for line in report_lines:
+            f.write(line + "\n")
+
+    print("Sales KPI report generated successfully.")
+
+    return df, monthly_revenue, top_products, revenue_by_country

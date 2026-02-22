@@ -19,5 +19,3 @@ Negative Quantities: 10624
 
 Zero or Negative Prices: 2517
 
-Number of Countries: 38
-

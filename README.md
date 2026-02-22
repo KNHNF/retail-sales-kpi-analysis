@@ -61,7 +61,18 @@ CSV → Data Cleaning → MySQL Storage → Validation → KPI Analysis → Text
 
 ---
 
+
 ## Author
 Karan Homayounfar
 MSc Data Science Student - UWE Bristol
 Focused on Data Engineering & Quantitative Systems
+
+---
+
+## Future Improvements
+
+- Implement SQL-based aggregation for performance comparison
+- Add visual dashboard using matplotlib or Streamlit
+- Add logging system instead of print statements
+- Introduce primary keys and duplicate constraints
+- Add automated unit tests
