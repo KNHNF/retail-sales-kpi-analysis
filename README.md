@@ -2,6 +2,7 @@
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-orange.svg)
 ![Status](https://img.shields.io/badge/Project-Active-brightgreen.svg)
+[![Portfolio](https://img.shields.io/badge/Portfolio-black?style=flat-square)](https://knhf.github.io)
 
 A compact, end‑to‑end data workflow demonstrating how raw transactional data can be cleaned, validated, stored, and transformed into business‑ready insights.  
 Built as a practical BI‑style project using Python and MySQL.
@@ -133,5 +134,6 @@ Focused on Data Engineering & Quantitative Systems
 
 This project is released under the **MIT License**.  
 You are free to use, modify, and build upon it.
+
 
 
