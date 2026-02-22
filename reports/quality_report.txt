@@ -1,0 +1,23 @@
+=== DATA QUALITY REPORT ===
+
+Missing Values Per Column:
+
+InvoiceNo           0
+StockCode           0
+Description      1454
+Quantity            0
+InvoiceDate         0
+UnitPrice           0
+CustomerID     135080
+Country             0
+dtype: int64
+
+
+Duplicate Rows: 5268
+
+Negative Quantities: 10624
+
+Zero or Negative Prices: 2517
+
+Number of Countries: 38
+
