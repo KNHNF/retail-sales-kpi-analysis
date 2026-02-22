@@ -1,4 +1,4 @@
-# 📊 Sales Data Quality & Reporting System  
+# 📊 Retail Sales KPI Analysis
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-orange.svg)
 ![Status](https://img.shields.io/badge/Project-Active-brightgreen.svg)
@@ -133,4 +133,5 @@ Focused on Data Engineering & Quantitative Systems
 
 This project is released under the **MIT License**.  
 You are free to use, modify, and build upon it.
+
 
