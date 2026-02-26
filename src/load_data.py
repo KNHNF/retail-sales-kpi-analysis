@@ -55,8 +55,7 @@ def load_data():
                 int(row["Quantity"]),
                 pd.Timestamp(row["InvoiceDate"]).strftime("%Y-%m-%d %H:%M:%S"),
                 float(row["UnitPrice"]),
-                int(row["CustomerID"]) if pd.notna(row["CustomerID"]
-                                                   ) and str(row["CustomerID"]) != "" else None,
+                int(row["CustomerID"]) if pd.notna(row["CustomerID"]) and str(row["CustomerID"]).strip() != "" else None,
                 str(row["Country"])
             ))
 
