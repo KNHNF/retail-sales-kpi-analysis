@@ -61,6 +61,9 @@ def generate_report():
     report_lines.append(str(revenue_by_country))
     report_lines.append("\n")
 
+    # Extract top 10 countries for plotting
+    top_10_countries = revenue_by_country.head(10)
+
     # 4️⃣ Monthly Revenue
     df["YearMonth"] = df["InvoiceDate"].dt.to_period("M")
 
@@ -81,4 +84,4 @@ def generate_report():
 
     print("Sales KPI report generated successfully.")
 
-    return df, monthly_revenue, top_products, revenue_by_country
+    return df, monthly_revenue, top_products, revenue_by_country, top_10_countries
