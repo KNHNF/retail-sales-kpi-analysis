@@ -1,37 +1,83 @@
-# 📊 Retail Sales KPI Analysis
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-orange.svg)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-3.7+-orange.svg)
-![Status](https://img.shields.io/badge/Project-Active-brightgreen.svg)
-[![Portfolio](https://img.shields.io/badge/Portfolio-black?style=flat-square)](https://knhf.github.io)
+# 📊 Retail Sales KPI Analysis  
+`https://img.shields.io/badge/Python-3.10%2B-blue.svg`  
+`https://img.shields.io/badge/MySQL-8.0-orange.svg`  
+`https://img.shields.io/badge/Matplotlib-3.7+-orange.svg`  
+`https://img.shields.io/badge/Project-Active-brightgreen.svg`  
+[`https://knhf.github.io`](https://knhf.github.io)
 
-A compact, end‑to‑end data workflow demonstrating how raw transactional data can be cleaned, validated, stored, and transformed into business‑ready insights.  
-Built as a practical end-to-end BI‑style project, demonstrating Python-based data workflows and MySQL integration.
+A practical, end‑to‑end data engineering and analytics workflow that transforms raw retail transactions into validated, structured, and business‑ready insights. The project demonstrates ingestion, cleaning, MySQL storage, automated data quality checks, KPI generation, and visual reporting.
 
 ---
 
 ## 🚀 Overview
 
-This project simulates a lightweight Business Intelligence pipeline:
+This project simulates a lightweight BI/data‑engineering pipeline:
 
 1. **Ingest** raw CSV data  
 2. **Clean & validate** the dataset  
 3. **Store** it in a relational database  
-4. **Generate** automated data quality checks  
-5. **Produce** revenue KPIs and text‑based reports  
+4. **Run** automated data quality checks  
+5. **Generate** revenue KPIs and text‑based reports  
 6. **Visualise** key business metrics  
 
-The dataset used is the *Online Retail* dataset, sourced from Kaggle:  
-🔗 [https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset](https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset)
+The dataset used is the *Online Retail* dataset from Kaggle:  
+🔗 `https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset` [(kaggle.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fwww.kaggle.com%2Fdatasets%2Fulrikthygepedersen%2Fonline-retail-dataset")
+
+---
+
+## 💡 Why This Project Matters
+
+Retail datasets are messy, inconsistent, and high‑volume. This project demonstrates how to turn raw transactional data into reliable KPIs that support revenue analysis, operational decisions, and BI reporting. It showcases practical skills in:
+
+- Data cleaning  
+- Data validation  
+- SQL storage  
+- KPI engineering  
+- Visual analytics  
+- Modular Python workflow design  
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Python** (pandas, matplotlib)  
-- **MySQL**  
+- **MySQL 8.0**  
 - **VS Code**  
 - **Git / GitHub**
+
+---
+
+## ⚙️ Setup
+
+Clone the repository and run the pipeline locally.
+
+### 1. Create a virtual environment
+```
+python -m venv venv
+```
+
+### 2. Activate it
+Windows:
+```
+venv\Scripts\activate
+```
+
+### 3. Install dependencies
+```
+pip install -r requirements.txt
+```
+
+### 4. Configure MySQL credentials  
+Update connection details inside `load_data.py`.
+
+### 5. Run the pipeline
+```
+python src/load_data.py
+python src/data_quality.py
+python src/generate_report.py
+```
+
+Outputs will appear in `/reports` and `/outputs`.
 
 ---
 
@@ -41,44 +87,56 @@ The dataset used is the *Online Retail* dataset, sourced from Kaggle:
 CSV → Cleaning → MySQL Storage → Quality Checks → KPI Analysis → Reports & Visuals
 ```
 
-All processing steps are modularised inside the `src/` directory for clarity and reusability.
+All processing steps are modularised inside `src/` for clarity and reusability.
 
 ---
 
 ## ✨ Key Features
 
-### 📥 1. Data Ingestion
-- Reads large CSV files efficiently  
-- Converts date formats safely  
-- Handles missing and invalid values  
+### 📥 Data Ingestion
+- Efficient CSV loading  
+- Safe datetime parsing  
+- Handling of missing/invalid values  
 - Inserts cleaned data into MySQL  
 
-### 🔍 2. Data Quality Validation
+### 🔍 Data Quality Validation
 - Missing value detection  
 - Duplicate row checks  
-- Negative quantity detection  
+- Negative quantity checks  
 - Zero/negative price checks  
-- Basic country distribution checks  
+- Country distribution checks  
 
-### 📈 3. KPI Reporting
+### 📈 KPI Reporting
 - Total revenue  
-- Top 10 products by revenue  
+- Top 10 products  
 - Revenue by country  
 - Monthly revenue trend  
 - Removal of cancellations and invalid transactions  
 
-### 🖼️ 4. Visual Outputs
+### 🖼️ Visual Outputs  
 Saved to the `outputs/` directory:
+
 - Monthly revenue trend  
 - Top 10 products  
 - Top 10 countries  
 
-Charts are styled for readability and simplicity.
-All visualizations are saved to the `outputs/` folder for reproducibility.
+Charts are styled for clarity and business readability.
+
 ---
+
 ## 📸 Screenshots
+
+### Monthly Revenue Trend  
 ![Monthly Revenue Trend](outputs/monthly_revenue_trend.png)
+
+### Top 10 Products  
+![Top 10 Countries](outputs/top_10_countries.png)
+
+### Top 10 Countries  
+![Top 10 Products](outputs/top_10_products.png)
+
 ---
+
 ## 📊 Example Insights
 
 - Total Revenue: **£10.6M**  
@@ -114,12 +172,16 @@ project/
     └── sales_analysis.ipynb
 ```
 
+---
 
-## 👤 Author
+## ⚠️ Limitations
 
-**Karan Homayounfar**  
-MSc Data Science — UWE Bristol  
-Focused on Data Engineering & Quantitative Systems
+- Dataset is historical (2010–2011)  
+- No customer‑level segmentation  
+- No product hierarchy  
+- No currency conversion  
+- No timezone normalisation  
+- MySQL schema is intentionally simple for demonstration  
 
 ---
 
@@ -129,16 +191,19 @@ Focused on Data Engineering & Quantitative Systems
 - Introduce logging instead of print statements  
 - Add primary keys and duplicate constraints  
 - Implement automated unit tests  
-- Optional: build a small Streamlit dashboard  
+- Optional: build a Streamlit dashboard  
+
+---
+
+## 👤 Author
+
+**Karan Homayounfar**  
+MSc Data Science — UWE Bristol  
+Focused on Data Engineering & Quantitative Systems
 
 ---
 
 ## 📄 License
 
-This project is released under the **MIT License**.  
-You are free to use, modify, and build upon it.
-
-
-
-
-
+Released under the **MIT License**.  
+Free to use, modify, and build upon.
