@@ -1,10 +1,9 @@
 # 📊 Retail Sales KPI Analysis  
-`https://img.shields.io/badge/Python-3.10%2B-blue.svg`  
-`https://img.shields.io/badge/MySQL-8.0-orange.svg`  
-`https://img.shields.io/badge/Matplotlib-3.7+-orange.svg`  
-`https://img.shields.io/badge/Project-Active-brightgreen.svg`  
-[`https://knhf.github.io`](https://knhf.github.io)
-
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-orange.svg)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-3.7%2B-orange.svg)
+![Status](https://img.shields.io/badge/Project-Active-brightgreen.svg)
+[![Portfolio](https://img.shields.io/badge/Portfolio-black?style=flat-square)](https://knhf.github.io)
 A practical, end‑to‑end data engineering and analytics workflow that transforms raw retail transactions into validated, structured, and business‑ready insights. The project demonstrates ingestion, cleaning, MySQL storage, automated data quality checks, KPI generation, and visual reporting.
 
 ---
