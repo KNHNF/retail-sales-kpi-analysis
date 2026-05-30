@@ -1,15 +1,28 @@
-# Byte-compiled / optimized / DLL files
+# Python cache
 __pycache__/
-*.py[cod]
-*.pyo
 *.pyc
+*.pyo
+*.pyd
 
 # Virtual environments
 venv/
 .env/
 
-# Jupyter notebook checkpoints
+# Jupyter
 .ipynb_checkpoints/
 
-# VS Code settings
+# VS Code
 .vscode/
+
+# Data files
+data/*.csv
+data/*.xlsx
+data/*.parquet
+data/*.zip
+
+# Outputs
+outputs/*.png
+outputs/*.jpg
+
+# Logs
+*.log

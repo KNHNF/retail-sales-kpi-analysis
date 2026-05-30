@@ -34,11 +34,11 @@ def generate_report():
     report_lines = []
     report_lines.append("=== SALES KPI REPORT ===\n")
 
-    # 1️⃣ Total Revenue
+    # Total Revenue
     total_revenue = df["Revenue"].sum()
     report_lines.append(f"Total Revenue: £{total_revenue:,.2f}\n")
 
-    # 2️⃣ Top 10 Products
+    # Top 10 Products
     top_products = (
         df.groupby("Description")["Revenue"]
         .sum()
@@ -50,7 +50,7 @@ def generate_report():
     report_lines.append(str(top_products))
     report_lines.append("\n")
 
-    # 3️⃣ Revenue by Country
+    # Revenue by Country
     revenue_by_country = (
         df.groupby("Country")["Revenue"]
         .sum()
@@ -64,7 +64,7 @@ def generate_report():
     # Extract top 10 countries for plotting
     top_10_countries = revenue_by_country.head(10)
 
-    # 4️⃣ Monthly Revenue
+    # Monthly Revenue
     df["YearMonth"] = df["InvoiceDate"].dt.to_period("M")
 
     monthly_revenue = (

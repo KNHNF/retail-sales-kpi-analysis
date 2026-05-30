@@ -19,9 +19,6 @@ This project simulates a lightweight BI/data‑engineering pipeline:
 5. **Generate** revenue KPIs and text‑based reports  
 6. **Visualise** key business metrics  
 
-The dataset used is the *Online Retail* dataset from Kaggle:  
-🔗 `https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset` [(kaggle.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fwww.kaggle.com%2Fdatasets%2Fulrikthygepedersen%2Fonline-retail-dataset")
-
 ---
 
 ## 💡 Why This Project Matters
@@ -50,6 +47,12 @@ Retail datasets are messy, inconsistent, and high‑volume. This project demonst
 
 Clone the repository and run the pipeline locally.
 
+### 0. Download the dataset from Kaggle and place it in the /data folder.
+
+The dataset used is the *Online Retail* dataset from Kaggle:  
+🔗 `https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset` [(kaggle.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fwww.kaggle.com%2Fdatasets%2Fulrikthygepedersen%2Fonline-retail-dataset")
+
+
 ### 1. Create a virtual environment
 ```
 python -m venv venv
@@ -77,13 +80,14 @@ python src/generate_report.py
 ```
 
 Outputs will appear in `/reports` and `/outputs`.
+0. Download the dataset from Kaggle and place it in the /data folder.
 
 ---
 
 ## 🧱 Architecture
 
 ```
-CSV → Cleaning → MySQL Storage → Quality Checks → KPI Analysis → Reports & Visuals
+CSV -> Cleaning -> MySQL Storage -> Quality Checks -> KPI Analysis -> Reports & Visuals
 ```
 
 All processing steps are modularised inside `src/` for clarity and reusability.
@@ -128,10 +132,10 @@ Charts are styled for clarity and business readability.
 ### Monthly Revenue Trend  
 ![Monthly Revenue Trend](outputs/monthly_revenue_trend.png)
 
-### Top 10 Products  
+### Top 10 Countries  
 ![Top 10 Countries](outputs/top_10_countries.png)
 
-### Top 10 Countries  
+### Top 10 Products  
 ![Top 10 Products](outputs/top_10_products.png)
 
 ---
@@ -156,8 +160,7 @@ project/
 │   └── generate_report.py
 │
 ├── data/
-│   └── dataset.csv
-│
+│   
 ├── reports/
 │   ├── quality_report.txt
 │   └── sales_kpi_report.txt
