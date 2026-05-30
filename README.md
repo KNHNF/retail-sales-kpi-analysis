@@ -2,13 +2,9 @@
 
 A practical, end‑to‑end data engineering and analytics workflow that transforms raw retail transactions into validated, structured, and business‑ready insights. The project demonstrates ingestion, cleaning, MySQL storage, automated data quality checks, KPI generation, and visual reporting.
 
----
-
 ## Overview
 
 This project simulates a lightweight BI and data‑engineering pipeline. It takes raw CSV data, cleans and validates it, loads it into a relational database, performs automated quality checks, and generates revenue‑focused KPIs along with visual summaries. The goal is to show how messy transactional data can be turned into reliable business insights.
-
----
 
 ## Why This Project Matters
 
@@ -22,8 +18,6 @@ Retail data is often inconsistent, duplicated, and difficult to analyse without 
 
 It reflects the type of work done in analytics, BI engineering, and data‑driven decision‑making roles.
 
----
-
 ## Tech Stack
 
 - Python (pandas, matplotlib)  
@@ -31,12 +25,13 @@ It reflects the type of work done in analytics, BI engineering, and data‑drive
 - VS Code  
 - Git and GitHub  
 
----
-
 ## Setup Instructions
 
 1. Download the dataset from Kaggle and place it in the `data` folder.  
-   Dataset: Online Retail (2010–2011)
+   Dataset: Online Retail (2010–2011)  
+   [https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset](https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset)
+
+Place the downloaded file inside the `data` directory before running the pipeline.
 
 2. Create a virtual environment  
    ```
@@ -65,8 +60,6 @@ It reflects the type of work done in analytics, BI engineering, and data‑drive
 
 Reports and visual outputs will be saved in the `reports` and `outputs` directories.
 
----
-
 ## Architecture Summary
 
 The workflow follows this sequence:
@@ -75,39 +68,43 @@ The workflow follows this sequence:
 
 Each step is modularised inside the `src` directory for clarity and reusability.
 
----
-
 ## Key Features
 
 ### Data Ingestion
+
 - Efficient CSV loading  
 - Safe datetime parsing  
 - Handling of missing and invalid values  
 - Inserts cleaned data into MySQL  
 
 ### Data Quality Validation
+
 - Missing value checks  
 - Duplicate detection  
 - Negative quantity and price checks  
 - Country distribution checks  
 
 ### KPI Reporting
+
 - Total revenue  
 - Top products  
 - Revenue by country  
 - Monthly revenue trend  
 - Removal of cancellations and invalid transactions  
 
-### Visual Outputs
-Generated charts include:
+## Visual Outputs
 
-- Monthly revenue trend  
-- Top 10 products  
-- Top 10 countries  
+### Monthly Revenue Trend
+![Monthly Revenue Trend](outputs/monthly_revenue_trend.png)
 
-All visuals are saved in the `outputs` directory.
+### Top 10 Products
+![Top 10 Products](outputs/top_10_products.png)
 
----
+### Top 10 Countries
+![Top 10 Countries](outputs/top_10_countries.png)
+
+
+These visuals are designed for clarity and business readability.
 
 ## Example Insights
 
@@ -115,8 +112,6 @@ All visuals are saved in the `outputs` directory.
 - Transactions across 38 countries  
 - Strong seasonal uplift in Q4  
 - The UK is the dominant revenue source  
-
----
 
 ## Limitations
 
@@ -126,8 +121,6 @@ All visuals are saved in the `outputs` directory.
 - No currency conversion  
 - MySQL schema is intentionally simple for demonstration  
 
----
-
 ## Future Improvements
 
 - Add SQL‑based aggregation for performance comparison  
@@ -136,15 +129,11 @@ All visuals are saved in the `outputs` directory.
 - Implement automated unit tests  
 - Optional: build a Streamlit dashboard  
 
----
-
 ## Author
 
 Karan Homayounfar  
 MSc Data Science — UWE Bristol  
 Focused on data engineering and quantitative systems
-
----
 
 ## License
 
