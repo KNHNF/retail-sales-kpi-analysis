@@ -1,211 +1,151 @@
-# 📊 Retail Sales KPI Analysis  
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-orange.svg)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-3.7%2B-orange.svg)
-![Status](https://img.shields.io/badge/Project-Active-brightgreen.svg)
-[![Portfolio](https://img.shields.io/badge/Portfolio-black?style=flat-square)](https://knhf.github.io)
+# Retail Sales KPI Analysis
+
 A practical, end‑to‑end data engineering and analytics workflow that transforms raw retail transactions into validated, structured, and business‑ready insights. The project demonstrates ingestion, cleaning, MySQL storage, automated data quality checks, KPI generation, and visual reporting.
 
 ---
 
-## 🚀 Overview
+## Overview
 
-This project simulates a lightweight BI/data‑engineering pipeline:
-
-1. **Ingest** raw CSV data  
-2. **Clean & validate** the dataset  
-3. **Store** it in a relational database  
-4. **Run** automated data quality checks  
-5. **Generate** revenue KPIs and text‑based reports  
-6. **Visualise** key business metrics  
+This project simulates a lightweight BI and data‑engineering pipeline. It takes raw CSV data, cleans and validates it, loads it into a relational database, performs automated quality checks, and generates revenue‑focused KPIs along with visual summaries. The goal is to show how messy transactional data can be turned into reliable business insights.
 
 ---
 
-## 💡 Why This Project Matters
+## Why This Project Matters
 
-Retail datasets are messy, inconsistent, and high‑volume. This project demonstrates how to turn raw transactional data into reliable KPIs that support revenue analysis, operational decisions, and BI reporting. It showcases practical skills in:
+Retail data is often inconsistent, duplicated, and difficult to analyse without proper preprocessing. This project demonstrates a practical approach to:
 
-- Data cleaning  
-- Data validation  
-- SQL storage  
-- KPI engineering  
-- Visual analytics  
-- Modular Python workflow design  
+- cleaning and validating raw data  
+- storing it in a structured format  
+- generating meaningful KPIs  
+- producing clear visual summaries  
+- designing a modular Python workflow  
 
----
-
-## 🛠️ Tech Stack
-
-- **Python** (pandas, matplotlib)  
-- **MySQL 8.0**  
-- **VS Code**  
-- **Git / GitHub**
+It reflects the type of work done in analytics, BI engineering, and data‑driven decision‑making roles.
 
 ---
 
-## ⚙️ Setup
+## Tech Stack
 
-Clone the repository and run the pipeline locally.
-
-### 0. Download the dataset from Kaggle and place it in the /data folder.
-
-The dataset used is the *Online Retail* dataset from Kaggle:  
-🔗 `https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset` [(kaggle.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fwww.kaggle.com%2Fdatasets%2Fulrikthygepedersen%2Fonline-retail-dataset")
-
-
-### 1. Create a virtual environment
-```
-python -m venv venv
-```
-
-### 2. Activate it
-Windows:
-```
-venv\Scripts\activate
-```
-
-### 3. Install dependencies
-```
-pip install -r requirements.txt
-```
-
-### 4. Configure MySQL credentials  
-Update connection details inside `load_data.py`.
-
-### 5. Run the pipeline
-```
-python src/load_data.py
-python src/data_quality.py
-python src/generate_report.py
-```
-
-Outputs will appear in `/reports` and `/outputs`.
-0. Download the dataset from Kaggle and place it in the /data folder.
+- Python (pandas, matplotlib)  
+- MySQL 8.0  
+- VS Code  
+- Git and GitHub  
 
 ---
 
-## 🧱 Architecture
+## Setup Instructions
 
-```
-CSV -> Cleaning -> MySQL Storage -> Quality Checks -> KPI Analysis -> Reports & Visuals
-```
+1. Download the dataset from Kaggle and place it in the `data` folder.  
+   Dataset: Online Retail (2010–2011)
 
-All processing steps are modularised inside `src/` for clarity and reusability.
+2. Create a virtual environment  
+   ```
+   python -m venv venv
+   ```
+
+3. Activate it  
+   Windows:  
+   ```
+   venv\Scripts\activate
+   ```
+
+4. Install dependencies  
+   ```
+   pip install -r requirements.txt
+   ```
+
+5. Update MySQL connection details inside `load_data.py`.
+
+6. Run the pipeline  
+   ```
+   python src/load_data.py
+   python src/data_quality.py
+   python src/generate_report.py
+   ```
+
+Reports and visual outputs will be saved in the `reports` and `outputs` directories.
 
 ---
 
-## ✨ Key Features
+## Architecture Summary
 
-### 📥 Data Ingestion
+The workflow follows this sequence:
+
+**CSV → Cleaning → MySQL Storage → Quality Checks → KPI Analysis → Reports and Visuals**
+
+Each step is modularised inside the `src` directory for clarity and reusability.
+
+---
+
+## Key Features
+
+### Data Ingestion
 - Efficient CSV loading  
 - Safe datetime parsing  
-- Handling of missing/invalid values  
+- Handling of missing and invalid values  
 - Inserts cleaned data into MySQL  
 
-### 🔍 Data Quality Validation
-- Missing value detection  
-- Duplicate row checks  
-- Negative quantity checks  
-- Zero/negative price checks  
+### Data Quality Validation
+- Missing value checks  
+- Duplicate detection  
+- Negative quantity and price checks  
 - Country distribution checks  
 
-### 📈 KPI Reporting
+### KPI Reporting
 - Total revenue  
-- Top 10 products  
+- Top products  
 - Revenue by country  
 - Monthly revenue trend  
 - Removal of cancellations and invalid transactions  
 
-### 🖼️ Visual Outputs  
-Saved to the `outputs/` directory:
+### Visual Outputs
+Generated charts include:
 
 - Monthly revenue trend  
 - Top 10 products  
 - Top 10 countries  
 
-Charts are styled for clarity and business readability.
+All visuals are saved in the `outputs` directory.
 
 ---
 
-## 📸 Screenshots
+## Example Insights
 
-### Monthly Revenue Trend  
-![Monthly Revenue Trend](outputs/monthly_revenue_trend.png)
-
-### Top 10 Countries  
-![Top 10 Countries](outputs/top_10_countries.png)
-
-### Top 10 Products  
-![Top 10 Products](outputs/top_10_products.png)
-
----
-
-## 📊 Example Insights
-
-- Total Revenue: **£10.6M**  
-- Transactions across **38 countries**  
+- Total revenue: approximately £10.6M  
+- Transactions across 38 countries  
 - Strong seasonal uplift in Q4  
-- UK dominates overall revenue  
+- The UK is the dominant revenue source  
 
 ---
 
-## 📁 Project Structure
-
-```
-project/
-│
-├── src/
-│   ├── load_data.py
-│   ├── data_quality.py
-│   └── generate_report.py
-│
-├── data/
-│   
-├── reports/
-│   ├── quality_report.txt
-│   └── sales_kpi_report.txt
-│
-├── outputs/
-│   ├── monthly_revenue_trend.png
-│   ├── top_10_products.png
-│   └── top_10_countries.png
-│
-└── notebooks/
-    └── sales_analysis.ipynb
-```
-
----
-
-## ⚠️ Limitations
+## Limitations
 
 - Dataset is historical (2010–2011)  
 - No customer‑level segmentation  
 - No product hierarchy  
 - No currency conversion  
-- No timezone normalisation  
 - MySQL schema is intentionally simple for demonstration  
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - Add SQL‑based aggregation for performance comparison  
-- Introduce logging instead of print statements  
+- Introduce logging  
 - Add primary keys and duplicate constraints  
 - Implement automated unit tests  
 - Optional: build a Streamlit dashboard  
 
 ---
 
-## 👤 Author
+## Author
 
-**Karan Homayounfar**  
+Karan Homayounfar  
 MSc Data Science — UWE Bristol  
-Focused on Data Engineering & Quantitative Systems
+Focused on data engineering and quantitative systems
 
 ---
 
-## 📄 License
+## License
 
-Released under the **MIT License**.  
-Free to use, modify, and build upon.
+Released under the MIT License. Free to use, modify, and build upon.
