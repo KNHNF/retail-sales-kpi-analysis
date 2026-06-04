@@ -1,140 +1,162 @@
 # Retail Sales KPI Analysis
 
-A practical, end‑to‑end data engineering and analytics workflow that transforms raw retail transactions into validated, structured, and business‑ready insights. The project demonstrates ingestion, cleaning, MySQL storage, automated data quality checks, KPI generation, and visual reporting.
+[![Python](https://img.shields.io/badge/Python-3.10+-3572A5?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://mysql.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-dashboard-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://retail-sales-kpi-analysis.streamlit.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-a78bfa?style=flat-square)](LICENSE)
 
-## Overview
+End-to-end data engineering and analytics pipeline that transforms raw retail transactions into validated, structured, and business-ready insights. Covers ingestion, cleaning, MySQL storage, automated data quality checks, KPI generation, and visual reporting.
 
-This project simulates a lightweight BI and data‑engineering pipeline. It takes raw CSV data, cleans and validates it, loads it into a relational database, performs automated quality checks, and generates revenue‑focused KPIs along with visual summaries. The goal is to show how messy transactional data can be turned into reliable business insights.
+**Dataset:** Online Retail 2010–2011 · ~500K transactions · £10.6M revenue · 38 countries
 
-## Why This Project Matters
+---
 
-Retail data is often inconsistent, duplicated, and difficult to analyse without proper preprocessing. This project demonstrates a practical approach to:
+## Live Dashboard
 
-- cleaning and validating raw data  
-- storing it in a structured format  
-- generating meaningful KPIs  
-- producing clear visual summaries  
-- designing a modular Python workflow  
+Interactive Streamlit dashboard — filter by date range and country, explore monthly revenue trends, top products, and data quality metrics.
 
-It reflects the type of work done in analytics, BI engineering, and data‑driven decision‑making roles.
+[Open dashboard](https://retail-sales-kpi-analysis.streamlit.app) — upload the dataset CSV (Kaggle link in the sidebar) and the dashboard loads instantly.
+
+---
+
+## Pipeline Architecture
+
+```
+CSV (Kaggle)
+    |
+src/load_data.py       cleaning, validation, MySQL insert
+    |
+src/data_quality.py    automated quality checks
+    |
+src/generate_report.py KPI calculation, chart generation
+    |
+outputs/               PNG charts
+reports/               summary report
+```
+
+---
+
+## Key Results
+
+| Metric | Value |
+|---|---|
+| Total revenue | ~£10.6M |
+| Transactions (cleaned) | ~400K |
+| Countries | 38 |
+| Top revenue source | United Kingdom |
+| Seasonal peak | Q4 (Oct–Dec) |
+
+---
 
 ## Tech Stack
 
-- Python (pandas, matplotlib)  
-- MySQL 8.0  
-- VS Code  
-- Git and GitHub  
+| Tool | Use |
+|---|---|
+| Python, Pandas, Matplotlib | ETL, analysis, visualisation |
+| MySQL 8.0 | Structured storage and querying |
+| Streamlit | Interactive dashboard |
+| Git, GitHub | Version control |
 
-## Setup Instructions
+---
 
-1. Download the dataset from Kaggle and place it in the `data` folder.  
-   Dataset: Online Retail (2010–2011)  
-   [https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset](https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset)
+## Setup
 
-Place the downloaded file inside the `data` directory before running the pipeline.
+**1. Get the dataset**
 
-2. Create a virtual environment  
-   ```
-   python -m venv venv
-   ```
+Download from Kaggle and place in the `data/` folder:
+[Online Retail Dataset](https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset)
 
-3. Activate it  
-   Windows:  
-   ```
-   venv\Scripts\activate
-   ```
+**2. Create and activate a virtual environment**
 
-4. Install dependencies  
-   ```
-   pip install -r requirements.txt
-   ```
+```bash
+python -m venv venv
+venv\Scripts\activate       # Windows
+source venv/bin/activate    # macOS/Linux
+```
 
-5. Update MySQL connection details inside `load_data.py`.
+**3. Install dependencies**
 
-6. Run the pipeline  
-   ```
-   python src/load_data.py
-   python src/data_quality.py
-   python src/generate_report.py
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-Reports and visual outputs will be saved in the `reports` and `outputs` directories.
+**4. Configure MySQL**
 
-## Architecture Summary
+Update the connection details in `src/load_data.py`:
 
-The workflow follows this sequence:
+```python
+host = "localhost"
+user = "your_user"
+password = "your_password"
+database = "retail_db"
+```
 
-**CSV → Cleaning → MySQL Storage → Quality Checks → KPI Analysis → Reports and Visuals**
+**5. Run the pipeline**
 
-Each step is modularised inside the `src` directory for clarity and reusability.
+```bash
+python src/load_data.py
+python src/data_quality.py
+python src/generate_report.py
+```
 
-## Key Features
+**6. Run the Streamlit dashboard**
 
-### Data Ingestion
+```bash
+streamlit run streamlit_app.py
+```
 
-- Efficient CSV loading  
-- Safe datetime parsing  
-- Handling of missing and invalid values  
-- Inserts cleaned data into MySQL  
-
-### Data Quality Validation
-
-- Missing value checks  
-- Duplicate detection  
-- Negative quantity and price checks  
-- Country distribution checks  
-
-### KPI Reporting
-
-- Total revenue  
-- Top products  
-- Revenue by country  
-- Monthly revenue trend  
-- Removal of cancellations and invalid transactions  
+---
 
 ## Visual Outputs
 
 ### Monthly Revenue Trend
 ![Monthly Revenue Trend](outputs/monthly_revenue_trend.png)
 
-### Top 10 Products
+### Top 10 Products by Revenue
 ![Top 10 Products](outputs/top_10_products.png)
 
-### Top 10 Countries
+### Top 10 Countries by Revenue
 ![Top 10 Countries](outputs/top_10_countries.png)
 
+---
 
-These visuals are designed for clarity and business readability.
+## Data Quality Checks
 
-## Example Insights
+The pipeline runs automated checks after loading:
 
-- Total revenue: approximately £10.6M  
-- Transactions across 38 countries  
-- Strong seasonal uplift in Q4  
-- The UK is the dominant revenue source  
+- Missing CustomerID detection and removal
+- Negative quantity and price filtering
+- Cancellation removal (InvoiceNo starting with C)
+- Duplicate transaction detection
+- Country distribution validation
+
+---
 
 ## Limitations
 
-- Dataset is historical (2010–2011)  
-- No customer‑level segmentation  
-- No product hierarchy  
-- No currency conversion  
-- MySQL schema is intentionally simple for demonstration  
+- Dataset is historical (2010–2011)
+- No customer-level segmentation or cohort analysis
+- No product category hierarchy
+- No currency conversion
+- MySQL schema is intentionally simple for demonstration purposes
+
+---
 
 ## Future Improvements
 
-- Add SQL‑based aggregation for performance comparison  
-- Introduce logging  
-- Add primary keys and duplicate constraints  
-- Implement automated unit tests  
-- Optional: build a Streamlit dashboard  
+- SQL-based aggregation for performance comparison with Pandas
+- Customer segmentation using RFM analysis
+- Automated unit tests
+- Logging and pipeline error handling
+- PostgreSQL migration
+
+---
 
 ## Author
 
-Karan Homayounfar  
-MSc Data Science — UWE Bristol  
-Focused on data engineering and quantitative systems
+**Karan Homayounfar** · MSc Data Science, UWE Bristol
+[Portfolio](https://karan-portfolio-al7.pages.dev) · [LinkedIn](https://linkedin.com/in/karan-homayounfar) · [GitHub](https://github.com/KNHNF)
 
 ## License
 
-Released under the MIT License. Free to use, modify, and build upon.
+MIT — free to use, modify, and build upon.
