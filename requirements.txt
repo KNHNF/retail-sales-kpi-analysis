@@ -38,3 +38,5 @@ traitlets==5.14.3
 typing_extensions==4.15.0
 tzdata==2025.3
 wcwidth==0.6.0
+streamlit>=1.32.0
+ 
