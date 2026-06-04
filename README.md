@@ -13,9 +13,9 @@ End-to-end data engineering and analytics pipeline that transforms raw retail tr
 
 ## Live Dashboard
 
-Interactive Streamlit dashboard — filter by date range and country, explore monthly revenue trends, top products, and data quality metrics.
+Interactive Streamlit dashboard - filter by date range and country, explore monthly revenue trends, top products, and data quality metrics.
 
-[Open dashboard](https://retail-sales-kpi-analysis.streamlit.app) — upload the dataset CSV (Kaggle link in the sidebar) and the dashboard loads instantly.
+[Open dashboard](https://retail-sales-kpi-analysis.streamlit.app) - upload the dataset CSV (Kaggle link in the sidebar) and the dashboard loads instantly.
 
 ---
 
