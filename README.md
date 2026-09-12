@@ -7,7 +7,7 @@
 
 End-to-end data engineering and analytics pipeline that transforms raw retail transactions into validated, structured, and business-ready insights. Covers ingestion, cleaning, MySQL storage, automated data quality checks, KPI generation, and visual reporting.
 
-**Dataset:** Online Retail 2010–2011 · ~500K transactions · £10.6M revenue · 38 countries
+**Dataset:** Online Retail 2010-2011 · ~500K transactions · £10.6M revenue · 38 countries
 
 ---
 
@@ -44,7 +44,7 @@ reports/               summary report
 | Transactions (cleaned) | ~400K |
 | Countries | 38 |
 | Top revenue source | United Kingdom |
-| Seasonal peak | Q4 (Oct–Dec) |
+| Seasonal peak | Q4 (Oct-Dec) |
 
 ---
 
@@ -134,7 +134,7 @@ The pipeline runs automated checks after loading:
 
 ## Limitations
 
-- Dataset is historical (2010–2011)
+- Dataset is historical (2010-2011)
 - No customer-level segmentation or cohort analysis
 - No product category hierarchy
 - No currency conversion
@@ -159,4 +159,4 @@ The pipeline runs automated checks after loading:
 
 ## License
 
-MIT — free to use, modify, and build upon.
+MIT license, free to use, modify, and build upon.
