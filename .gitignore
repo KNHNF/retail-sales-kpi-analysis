@@ -26,3 +26,5 @@ outputs/*.jpg
 
 # Logs
 *.log
+HANDOFF.md
+CLAUDE.md
