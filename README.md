@@ -105,6 +105,14 @@ python src/generate_report.py
 streamlit run streamlit_app.py
 ```
 
+## Tests
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The tests use a small in-memory transaction fixture and a mocked MySQL connection. They check the filtering and KPI calculations without the Kaggle dataset, MySQL server or Streamlit dashboard.
+
 ---
 
 ## Visual Outputs
@@ -146,7 +154,6 @@ The pipeline runs automated checks after loading:
 
 - SQL-based aggregation for performance comparison with Pandas
 - Customer segmentation using RFM analysis
-- Automated unit tests
 - Logging and pipeline error handling
 - PostgreSQL migration
 
